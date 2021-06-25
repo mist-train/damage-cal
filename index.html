@@ -1,9 +1,39 @@
 <!doctype html>
 <html>
   <head>
-    <title>This is the title of the webpage!</title>
+    <title>Mist Train Damage Table</title>
   </head>
+  <script>
+    var coef = [0.95, 0.96, 0.97, 0.98, 0.99, 1.0, 1.01, 1.02, 1.03, 1.04];
+    function is_valid_damage(damage, base_damage){
+      for (var i=0; i<coef.length; i++) {
+        if (Math.abs(coef[i]*base_damage - damage) < 5){
+          return true;
+        }
+      }
+      return false;
+    }
+    function is_valid_base_damage(damage_list, base_damage){
+      for (var i=0; i<damage_list.length; i++){
+        if (!is_valid_damage(damage_list[i], base_damage)){
+          return false;
+        }
+      }
+      return true;
+    }
+    function find_base_damage(damage_list){
+      var damage_list_sorted = damage_list.sort(function(a,b) { return a - b;});
+      for (var i=0; i<coef.length; i++) {
+        var base_damage = damage_list_sorted[0]/coef[i];
+        if (is_valid_base_damage(damage_list_sorted, base_damage)){
+          return base_damage;
+        }
+      }
+      return 0;
+    }
+    console.log(find_base_damage(22430, 22201, 23574));
+  </script>
   <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+    <p>test</p>
   </body>
 </html>
