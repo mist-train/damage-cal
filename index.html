@@ -31,33 +31,69 @@
       }
       return 0;
     }
-    function tableCreate() {
-      var body = document.getElementsByTagName('body')[0];
-      var tbl = document.createElement('table');
-      tbl.style.width = '100%';
-      tbl.setAttribute('border', '1');
-      var tbdy = document.createElement('tbody');
-      for (var i = 0; i < 3; i++) {
-        var tr = document.createElement('tr');
-        for (var j = 0; j < 2; j++) {
-          if (i == 2 && j == 1) {
-            break
-          } else {
-            var td = document.createElement('td');
-            td.appendChild(document.createTextNode('\u0020'))
-            i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
-            tr.appendChild(td)
-          }
+    function modify_table() {
+      var tbl = document.getElementById("dmgTable");
+      var base_damage = find_base_damage([22430, 22201, 23574]);
+      for (var i=0; i<coef.length; i++) {
+        if (base_damage!=0) {
+          tbl.rows[i+1].cells[1].innerHTML = base_damage*coef[i];
         }
-        tbdy.appendChild(tr);
+        else {
+          tbl.rows[i+1].cells[1].innerHTML = 'N/A';
+        }
       }
-      tbl.appendChild(tbdy);
-      body.appendChild(tbl)
     }
-    tableCreate();
     console.log(find_base_damage([22430, 22201, 23574]));
   </script>
   <body>
     <p>test</p>
+    <input type="button" value="Enter" onclick="modify_table();" />
+    <h1>Damage Table</h1>
+    <table border=1 id="dmgTable">
+      <tr>
+        <td>Coefficient</td>
+        <td>Damage</td>
+      </tr>
+      <tr>
+        <td>0.95</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>0.96</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>0.97</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>0.98</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>0.99</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>1.01</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>1.02</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>1.03</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>1.04</td>
+        <td>N/A</td>
+      </tr>
+    </table>
   </body>
 </html>
