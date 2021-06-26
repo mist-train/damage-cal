@@ -31,6 +31,11 @@
       }
       return 0;
     }
+    function clear_input() {
+      document.getElementById("damage1").value = 0;
+      document.getElementById("damage2").value = 0;
+      document.getElementById("damage3").value = 0;    
+    }
     function modify_table() {
       var tbl = document.getElementById("dmgTable");
       var damage1 = document.getElementById("damage1").value;
@@ -51,7 +56,8 @@
     ダメージ実測値1: <input type="number" id="damage1" value="0"> <br>
     ダメージ実測値2: <input type="number" id="damage2" value="0"> <br>
     ダメージ実測値3: <input type="number" id="damage3" value="0"> <br>
-    <input type="button" value="Enter" onclick="modify_table();" />
+    <input type="button" value="削除" onclick="clear_input();" />
+    <input type="button" value="入力" onclick="modify_table();" />
     <h1>ダメージ表</h1>
     <table border=0 id="dmgTable">
       <tr>
