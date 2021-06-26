@@ -38,10 +38,10 @@
       var base_damage = find_base_damage([damage1, damage2, damage3]);
       for (var i=0; i<coef.length; i++) {
         if (base_damage!=0) {
-          tbl.rows[i+1].cells[1].innerHTML = Math.round(base_damage*coef[i]);
+          tbl.rows[i%5+1].cells[Math.floor(i/5)*2+1].innerHTML = Math.round(base_damage*coef[i]);
         }
         else {
-          tbl.rows[i+1].cells[1].innerHTML = 'N/A';
+          tbl.rows[i%5+1].cells[Math.floor(i/5)*2+1].innerHTML = 'N/A';
         }
       }
     }
